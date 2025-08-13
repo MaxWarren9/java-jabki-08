@@ -2,8 +2,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,7 +46,6 @@ public class Main {
 
         // 6. Проверьте, содержится ли число 42 в списке
         System.out.println(arrayList.contains(42));
-
 
         // 7. Найдите и выведите минимальное и максимальное число в списке
         System.out.println(Collections.min(arrayList));
@@ -85,8 +87,7 @@ public class Main {
         reverseList(arrayList);
 
         // 13. Даны два списка. Объедините их в один, не добавляя повторы
-        arrayList.addAll(arrayList2);
-        printListWithSemicolon(arrayList);
+        printListWithSemicolon(joinTwoLists(stringList, arrayList));
 
         // 14. Считайте List<Integer> и посчитайте сумму только нечётных чисел
         sumAllEvenElements(arrayList);
@@ -96,7 +97,7 @@ public class Main {
 
     }
 
-    public static void printListWithSemicolon(List<Integer> list) {
+    public static void printListWithSemicolon(List<?> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             System.out.print(list.get(i) + ", ");
         }
@@ -155,6 +156,14 @@ public class Main {
             }
         }
         return filteredList;
+    }
+
+    public static List<?> joinTwoLists(List<?> list, List<?> list2) {
+        HashSet<Object> uniqueSet = new HashSet<>(list);
+        for (Object object: list2) {
+           uniqueSet.add(object);
+        }
+        return uniqueSet.stream().toList();
     }
 }
 
