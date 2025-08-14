@@ -5,14 +5,12 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
 
         // 1а. Вывести элементы списка из динамического массива размером 5.
-        ArrayList<Integer> arrayList = new ArrayList<>(5);
+        List<Integer> arrayList = new ArrayList<>(5);
         arrayList.add(1);
         arrayList.add(5);
         arrayList.add(25);
@@ -21,7 +19,7 @@ public class Main {
         printListWithSemicolon(arrayList);
 
         //1б. Вывести элементы списка из связанного массива размером 5.
-        LinkedList<Integer> linkedList = new LinkedList<>(arrayList);
+        List<Integer> linkedList = new LinkedList<>(arrayList);
         linkedList.removeFirst();
         linkedList.addFirst(7);
         linkedList.removeLast();
@@ -60,7 +58,7 @@ public class Main {
 
         // 9. Создайте список из массива
         int[] arr = {1, 2, 3, 4};
-        ArrayList<Integer> arrayList2 = new ArrayList<>(Arrays.stream(arr).boxed().toList());
+        List<Integer> arrayList2 = new ArrayList<>(Arrays.stream(arr).boxed().toList());
         arrayList2.add(1);
         printListWithSemicolon(arrayList2);
 
@@ -99,7 +97,7 @@ public class Main {
 
     public static void printListWithSemicolon(List<?> list) {
         for (int i = 0; i < list.size() - 1; i++) {
-            System.out.print(list.get(i) + ", ");
+            System.out.print(list.get(i) + " ");
         }
         System.out.println(list.getLast());
     }
@@ -122,7 +120,7 @@ public class Main {
         return count;
     }
 
-    public static int findAmountOfElementsBiggerThanGivenNumber(int num, ArrayList<Integer> list) {
+    public static int findAmountOfElementsBiggerThanGivenNumber(int num, List<Integer> list) {
         int amount = 0;
         for (int e : list) {
             if (e > num) {
@@ -132,7 +130,7 @@ public class Main {
         return amount;
     }
 
-    public static void reverseList(ArrayList<Integer> list) {
+    public static void reverseList(List<Integer> list) {
         Collections.reverse(list);
         printListWithSemicolon(list);
     }
